@@ -14,6 +14,8 @@ const facebookprovider = new FacebookAuthProvider();
 const UserContext = ({children}) => {
     const [user, setUser] = useState({})
     const [loading, setloading] = useState(true);
+    const [modeToogle, setModeToogle] = useState(true);
+    const [theme, setTheme] = useState("dark");
 
 
     const createUser = (email, password) =>{
@@ -52,6 +54,20 @@ const UserContext = ({children}) => {
         return sendEmailVerification(auth.currentUser);
     }
 
+    const modechange = () =>{
+        if(!modeToogle){
+          setTheme('dark');
+          setModeToogle(true)
+          document.body.setAttribute("data-theme", theme);
+        }
+        else{
+          setModeToogle(false)
+          setTheme('light');
+          document.body.setAttribute("data-theme", theme);
+        }
+        console.log(theme);
+    }
+
 
     useEffect( () => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
@@ -65,7 +81,7 @@ const UserContext = ({children}) => {
 
     },[])
     // const authInfo = {user, loading, createUser, signIn, logout, signinWithGoogle}
-    const authInfo = {user, loading, createUser,emailverify, signIn, logout, signinWithGoogle,signinWithGithub,signinWithFacebook, updateProfileInfo}
+    const authInfo = {user, loading, createUser,emailverify, signIn, logout, signinWithGoogle,signinWithGithub,signinWithFacebook, updateProfileInfo, modechange, modeToogle}
 
     return (
         <AuthContext.Provider value={authInfo} >
