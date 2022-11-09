@@ -9,7 +9,7 @@ const Slider = () => {
                 <div className="carousel rounded-lg  sm:w-ful h-60l">
                     <div id="slide1" className="carousel-item relative w-full">
                         <div className='carousel-img'>
-                            <img src="assets/p2.jpg" className="w-full object-contain" />
+                            <img src="assets/p2.jpg" className="w-full object-contain" alt="pic1" />
                         </div>
                         <SliderItem></SliderItem>
                         <div className="hidden sm:hidden md:block lg:block xl:block text-center absolute  transform -translate-y-1/2 left-5 right-5 bottom-0">
@@ -19,7 +19,7 @@ const Slider = () => {
                     </div> 
                     <div id="slide2" className="carousel-item relative w-full">
                         <div className='carousel-img' >
-                            <img src="assets/p3.jpg" className="w-full object-contain" />
+                            <img src="assets/p3.jpg" className="w-full object-contain" alt="pic2"/>
                         </div>
                         <SliderItem></SliderItem>
                         <div className="hidden sm:hidden md:block lg:block xl:block text-center absolute transform -translate-y-1/2 left-5 right-5 bottom-0">
@@ -29,7 +29,7 @@ const Slider = () => {
                     </div> 
                     <div id="slide3" className="carousel-item relative w-full">
                         <div className='carousel-img'>
-                            <img src="assets/p1.jpg" className="w-full" />
+                            <img src="assets/p1.jpg" className="w-full" alt="pic3" />
                         </div>
                         <SliderItem></SliderItem>
                         <div className="hidden sm:hidden md:block lg:block xl:block text-center absolute transform -translate-y-1/2 left-5 right-5 bottom-0">
@@ -39,7 +39,7 @@ const Slider = () => {
                     </div> 
                     <div id="slide4" className="carousel-item relative w-full">
                         <div className='carousel-img'>
-                            <img src="assets/p1.jpg" className="w-full" />
+                            <img src="assets/p1.jpg" className="w-full"  alt="pic4"/>
                         </div>
                         <SliderItem></SliderItem>
                         <div className="hidden sm:hidden md:block lg:block xl:block text-center absolute transform -translate-y-1/2 left-5 right-5 bottom-0">
