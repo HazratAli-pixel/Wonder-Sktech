@@ -3,8 +3,10 @@ import Blog from "../Blog/Blog";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Home from "../Home/Home";
 import Main from "../Layout/Main";
+import MyReview from "../MyReview/MyReview";
 import Profile from "../Profile/Profile";
 import Privateroute from "../Routes/Privateroute";
+import Addservice from "../Service/Addservice";
 import Allservice from "../Service/Allservice";
 import Servicedetails from "../Service/Servicedetails";
 import Signin from "../Signin/Signin";
@@ -39,6 +41,14 @@ export const Routes = createBrowserRouter([
             {
                 path:'servicelist',
                 element: <Allservice></Allservice>,
+            },
+            {
+                path:'addservice',
+                element: <Privateroute><Addservice></Addservice></Privateroute>,
+            },
+            {
+                path:'myreview',
+                element: <Privateroute><MyReview></MyReview></Privateroute>
             },
             {
                 path:'service/:id',

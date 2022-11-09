@@ -14,7 +14,19 @@ const Header = () => {
     }
     const userlogout = ()=>{
       logout();
+      localStorage.removeItem("accessToken")
+      const tokenName = 'accessToken';
+      const token = '00000';
+      const exday = -10;
+      setCookie(tokenName, token, exday)
       navigate('/')
+    }
+
+    const  setCookie = (cname, cvalue, exdays) => {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      let expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
 
     return (
@@ -29,12 +41,17 @@ const Header = () => {
               <div className="hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                   <li><Link to='/'>Home</Link></li>
-                  <li><NavLink to='/courses' className={({ isActive }) =>
-                    isActive ? 'bg-green-400 text-black' : undefined}>Courses</NavLink>
+                  <li><NavLink to='/servicelist' className={({ isActive }) =>
+                    isActive ? 'bg-green-400 text-black' : undefined}>Service</NavLink>
                   </li>
-                  <li><NavLink to='/FAQ' className={({ isActive }) =>
-                    isActive ? 'bg-green-400 text-black' : undefined}>FAQ</NavLink>
+                  {
+                    user? <><li><NavLink to='/addservice' className={({ isActive }) =>
+                    isActive ? 'bg-green-400 text-black' : undefined}>Add Service</NavLink>
                   </li>
+                  <li><NavLink to='/myreview' className={({ isActive }) =>
+                    isActive ? 'bg-green-400 text-black' : undefined}>My Review</NavLink>
+                  </li></>:""
+                  }
                   <li><NavLink to='/blog' className={({ isActive }) =>
                     isActive ? 'bg-green-400 text-black' : undefined}>Blog</NavLink>
                   </li>
@@ -59,12 +76,17 @@ const Header = () => {
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                 </label>
                 <ul tabIndex={0} className="text-right dropdown-content mt-3 p-2 shadow bg-neutral text-neutral-content rounded-box w-32 absolute right-0">
-                  <li className='py-1'><NavLink to='/courses' className={({ isActive }) =>
-                    isActive ? 'bg-green-400 text-black p-1 rounded-lg' : 'p-1'}>Courses</NavLink>
+                  <li><NavLink to='/servicelist' className={({ isActive }) =>
+                    isActive ? 'bg-green-400 text-black' : undefined}>Service</NavLink>
                   </li>
-                  <li className='py-1'><NavLink to='/FAQ' className={({ isActive }) =>
-                    isActive ? 'bg-green-400 text-black p-1 rounded-lg' : 'p-1'}>FAQ</NavLink>
+                  {
+                    user? <><li><NavLink to='/addservice' className={({ isActive }) =>
+                    isActive ? 'bg-green-400 text-black' : undefined}>Add Service</NavLink>
                   </li>
+                  <li><NavLink to='/myreview' className={({ isActive }) =>
+                    isActive ? 'bg-green-400 text-black' : undefined}>My Review</NavLink>
+                  </li></>:""
+                  }
                   <li className='py-1'><NavLink to='/blog' className={({ isActive }) =>
                     isActive ? 'bg-green-400 text-black p-1 rounded-lg' : 'p-1'}>Blog</NavLink>
                   </li>

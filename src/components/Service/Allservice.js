@@ -1,21 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Loading from '../ExtraComponent/Loading';
-import { AuthContext } from '../UserContext/UserContext';
 import ServiceItem from './ServiceItem';
 
 const Allservice = () => {
-    const {loading, setloading } = useContext(AuthContext)
+    const [loading, setloading] = useState(true)
     const [response, setresponse] = useState([])
     useEffect(()=>{
         fetch(`https://wondersketches-hazratali-pixel.vercel.app/service/list`)
         .then(res=>res.json())
         .then(data=>{ 
             setloading(false)
-            console.log(data)
             setresponse(data)
         })
     },[setloading])
-    // console.log(response)
     return (
         <div className='pt-2'>
             <div>

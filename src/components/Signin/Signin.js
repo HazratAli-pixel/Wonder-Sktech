@@ -15,8 +15,9 @@ const Signin = () => {
         signinWithGoogle()
         .then(result=>{
             setError('');
-            toast("Successfuly Loged in")
-            navigate(from, {replace: true})
+            const userId = result.email
+            const currentUserinfo =  {userId}
+            jwt(currentUserinfo)
         })
         .then(error => setError(error.message))
 
@@ -26,8 +27,9 @@ const Signin = () => {
         .then(result=>
             {
                 setError('');
-                toast("Successfuly Loged in")
-                navigate(from, {replace: true})
+                const userId = result.email
+                const currentUserinfo =  {userId}
+                jwt(currentUserinfo)
             })
         .then(error => setError(error.message))
     }
@@ -35,8 +37,9 @@ const Signin = () => {
         signinWithGithub()
         .then(result=>{
             setError('');
-            toast("Successfuly Loged in")
-            navigate(from, {replace: true})
+            const userId = result.email
+            const currentUserinfo =  {userId}
+            jwt(currentUserinfo)
         })
         .then(error => setError(error.message))
         
@@ -51,13 +54,40 @@ const Signin = () => {
         .then(result =>{
             form.reset();
             setError('')
-            toast("Successfuly Loged in")
-            navigate(from, {replace: true})
+            const userId = result.email
+            const currentUserinfo =  {userId}
+            jwt(currentUserinfo)
         })
         .catch(error => {
             setError(error.message)
         })
     }
+
+    const jwt = (userinformation)=>{
+            fetch("https://wondersketches-hazratali-pixel.vercel.app/jwt",{
+                method:"POST",
+                headers:{
+                    'Content-type':'application/json'
+                },
+                body:JSON.stringify(userinformation)
+            })
+            .then(res=>res.json())
+            .then(data => {
+                toast("Successfuly Loged in")
+                localStorage.setItem('accessToken', data.token)
+                const tokenName = 'accessToken';
+                const token = data.token;
+                const exday = 10;
+                setCookie(tokenName, token, exday)
+                navigate(from, {replace: true})
+            })
+    }
+    const  setCookie = (cname, cvalue, exdays) => {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        let expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }
 
 
     return (
