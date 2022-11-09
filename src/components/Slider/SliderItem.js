@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const SliderItem = () => {
     return (
-        <span>
+        <span className='hidden sm:hidden md:block lg:block xl:block'>
             <div className="absolute flex flex-col justify-end transform -translate-y-1/2 left-5 right-5 top-1/4">
                 <h1 className='text-3xl text-white font-bold'>Wonder Sketches</h1>
                 <p className='pt-3 text-white'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum ducimus sequi molestias quas unde perspiciatis obcaecati eaque possimus saepe labore!</p>

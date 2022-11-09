@@ -3,12 +3,13 @@ import ServiceItem from './ServiceItem';
 
 const Service = () => {
     return (
-        <div className='pt-5'>
+        <div className='pt-2'>
             <div>
-                <div className='px-4 pt-6 rounded-lg'>
+                <div className='px-4 pt-2 rounded-lg'>
                     <div className='rounded-lg p-2 bg-gradient-to-r from-amber-50 via-amber-300 to-amber-50'>
-                        <h1 className='text-4xl font-bold text-center'>Business Website Designing Price</h1>
-                        <h1 className='text-center p-2'>My Designing price is most affordable, low cost web design Service in Bangladesh offering website designing with Unbeatable “Pricing”</h1>
+                        <h1 className='text-4xl font-bold text-center'>Services</h1>
+                        <h1 className='text-center'>--------------------------------------</h1>
+                        <h1 className='text-center'>Last Updated three Service. Pick up from here our latest service</h1>
                     </div>
                 </div>
                 <div className='p-4 '>
