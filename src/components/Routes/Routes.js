@@ -3,6 +3,8 @@ import Blog from "../Blog/Blog";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Home from "../Home/Home";
 import Main from "../Layout/Main";
+import Profile from "../Profile/Profile";
+import Privateroute from "../Routes/Privateroute";
 import Signin from "../Signin/Signin";
 import Signup from "../Signup/Signup";
 
@@ -28,7 +30,10 @@ export const Routes = createBrowserRouter([
                 path:'blog',
                 element:<Blog></Blog>
             },
-            
+            {
+                path:'profile',
+                element: <Privateroute><Profile/></Privateroute>,
+            }
         ]
     },
 ]);

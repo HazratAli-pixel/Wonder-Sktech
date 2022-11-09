@@ -7,7 +7,9 @@ const Main = () => {
     return (
         <div>
             <Header></Header>
-            <Outlet/>
+            <div className='container mx-auto bg-slate-100 rounded-md'>
+                <Outlet/>
+            </div>
             <Footer></Footer>
         </div>
     );
