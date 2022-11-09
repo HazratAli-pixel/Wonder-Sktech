@@ -1,11 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../UserContext/UserContext';
-const RightSideBar = ({setReviews}) => {
+const RightSideBar = ({setReviews,serId, reviews}) => {
     const navigate = useNavigate();
-    const [reviews, setreviews] = useState('')
-    const [rating, setrating] = useState('')
     const {user, emailverify, logout} = useContext(AuthContext)
     console.log(user.photoURL);
     const emailvery = ()=>{
@@ -21,16 +19,26 @@ const RightSideBar = ({setReviews}) => {
 
     const submitReview=(e)=>{
         e.preventDefault()
-        const reviw = e.target.review.value
-        const rating = e.target.rating
-        console.log(reviw)
-      
-
-        // alert("form sumit",form.review.value)
-        alert(reviw)
-
+        const reviewText = e.target.review.value; 
+        const rating = e.target.rating.value;
+        const name = user.displayName;
+        const userId = user.email;
+        const imgUrl = user.photoURL;
+        const serviceId = serId;
+        const reviewdata = {reviewText, rating, name, userId, imgUrl, serviceId}
+        
+        fetch('https://wondersketches-hazratali-pixel.vercel.app/review/',{
+            method:'POST',
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(reviewdata)
+        })
+        .then(res=>res.json())
+        .then(resdata=>console.log(resdata))
     }
-
+    
+    console.log(serId)
 
     return (
         <div className=''>
@@ -53,7 +61,12 @@ const RightSideBar = ({setReviews}) => {
                 <form action="" method='POST' onSubmit={submitReview}>
                     <div className='p-1'>
                         <label htmlFor=""><strong>Review:</strong> </label>
-                        <textarea className="textarea w-full textarea-accent" onKeyUp={()=>setreviews()} name='review' placeholder="Express your openion here....."></textarea>
+                        <textarea className="textarea w-full textarea-accent"  name='review' placeholder="Express your openion here....."></textarea>
+                    </div>
+                    
+                    <div className='p-1'>
+                        <label htmlFor=""><strong>Rating:</strong> </label>
+                        <input type="text" placeholder="Type here" name='rating' className="input input-bordered input-success w-full" />
                     </div>
                     
                     <div className='p-1 flex items-center'>

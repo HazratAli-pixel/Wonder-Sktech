@@ -19,8 +19,6 @@ const Servicedetails = () => {
             setReviews(data.respons)})
         .catch(error=>console.log(error.message))
     },[respons._id,setloading])
-
-    console.log("id",respons);
     return (
         <>
         {
@@ -75,7 +73,7 @@ const Servicedetails = () => {
                 </div>
                 <div className='col-span-1 bg-slate-200 p-2'>
                     <div className='sticky top-0'>
-                     <RightSideBar setReviews={setReviews} reviews={reviews}/>
+                     <RightSideBar setReviews={setReviews} serId={respons._id} reviews={reviews}/>
                     </div>
                 </div>
             </div>
