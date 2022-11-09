@@ -1,14 +1,14 @@
-# Project name : Skill Tester
+# Project name : Wonder Sketches
 
-[open_learning](https://open-learning-6d337.web.app/ "open Learning")
-[Vercel_link](https://assignment10-server-sable.vercel.app/ "Vercel link")
+[Wonder Sketches](https://open-learning-6d337.web.app/ "Wonder Sketches")
+[Vercel_link](https://wondersketches-hazratali-pixel.vercel.app/ "Vercel link")
 
-### This is a React project
+### Which Technologys i use in this project
 
 1. CSS Library: tailwind and tailwind CSS component library daisyUI
 2. Icon: react icons
 3. React router Dom
-4. react-to-pdf
+4. react-photo View
 5. react-toastify
 6. for hosting i use firebase hosting
 7. for serside i use vercel
@@ -23,12 +23,12 @@
 
 ## Basic Information about this project
 
-- অনলাইন ভিত্তিক প্লাটফর্ম
-- এক সাথে সকল প্রকার কোর্স এর সমহার।
-- এখানে কোর্স কেনার সুবিধা আছে।
+- ওয়েব ডেভেলপমেন্ট রিলেটেড প্রজেক্ট
+- এখানে স্বল্প পরিসরে নিজের কিছু দক্ষতার প্রকাশ করা হয়েছে।
+- অসংখ্য সার্ভিস থেকে হোম পেজে লেটেস্ট/ আপডেটেড তিনটি সার্ভিস দেখানো হয়েছে। এছাড়াও নতুন করে যখনি কোনো সার্ভিস এ্যাড করা হবে তখন এখানে সেটা প্রথমে দেখা যাবে।
 - ইউজার লগইন কনট্রোল
+- এপিআই তৈরির ক্ষেত্রে JWT টোকেন সিস্টেম ব্যবহার করা হয়েছে। যার জন্য এটা পুরো সিকিউর একটা সিস্টেম
+- রিভিউ সাবমিট পরবর্তি আবার সেসব আপডেট করার সুযোগ রাখা হয়েছে। এবং চাইলে পুরনো কোনো রিভিউ ডিলিট করাও যাবে।
 - ইমেইল ভেরিফিকেশন সিস্টেম
 - সাইন আপ করার সুবিধা ছাড়াও ঝামেলাহিন জিমেইল, গিটহাব ও ফেসবুক লগইনের সুবিধা।
 - এছাড়াও আরো কিছু সুযোগ সুবিধা আছে এই প্রজেক্টে
-
-~~বিদ্যুৎ সমস্যার জন্য রিকুয়ারমেন্ট ব্যাতিত বেশি কিছু করার সুযোগ হয় নাই। তবে মার্ক্স পাওয়ার পর আবার যত কিছু অপডেট করা যায় করার চেষ্টা করা হবে~~

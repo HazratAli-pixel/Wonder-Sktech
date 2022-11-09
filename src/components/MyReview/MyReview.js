@@ -81,6 +81,12 @@ const MyReview = () => {
             <div className='p-2'>
                 <div>
                     <div>
+                        <div className='px-4 pt-2 rounded-lg'>
+                            <div className='rounded-lg p-2 bg-gradient-to-r from-amber-50 via-amber-300 to-amber-50'>
+                                <h1 className='text-3xl font-bold text-center'>All Reviews are here</h1>
+                                <h1 className='text-center'>-----------------------------------------------</h1>
+                            </div>
+                        </div>
                         <div className="overflow-x-auto">
                             <table className="table table-compact w-full">
                                 <thead>
@@ -127,7 +133,7 @@ const MyReview = () => {
                 <div className="modal">
                     <div className="modal-box relative">
                         <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                        <div className='flex gap-2 items-center'>
+                        <div className='flex gap-2 flex-col sm:flex-row md:flex-row items-center'>
                             <div>
                                 <img className='rounded-full' src={editReview[0]?.imgUrl} alt="f" />
                             </div>
@@ -157,7 +163,6 @@ const MyReview = () => {
                         <div className='text-right '>
                             <button className='btn' onClick={()=>updateReviews(editReview[0]?._id)}>Update Review</button>
                         </div>
-                        
                     </div>
                 </div>
             </div>
