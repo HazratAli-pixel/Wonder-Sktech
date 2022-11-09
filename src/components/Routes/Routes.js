@@ -38,9 +38,6 @@ export const Routes = createBrowserRouter([
             },
             {
                 path:'servicelist',
-                loader:({params})=>{
-                    return fetch(`https://wondersketches-hazratali-pixel.vercel.app/service/list`)
-                },
                 element: <Privateroute><Allservice></Allservice> </Privateroute>,
             },
             {

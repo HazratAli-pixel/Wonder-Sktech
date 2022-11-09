@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Loading from '../ExtraComponent/Loading';
 import ServiceItem from './ServiceItem';
 const Service = () => {
     const [service, setService] = useState([])
+    const [loading, setloading] = useState(true)
 
     useEffect(()=>{
         fetch("https://wondersketches-hazratali-pixel.vercel.app/service/latest/list")
         .then(response=>response.json())
-        .then(data=>setService(data))
+        .then(data=>{
+            setloading(false)
+            setService(data)
+        })
         .catch(error=>console.log(error.message))
     },[])
     return (
-        <div className='pt-2'>
+        <>
+            {
+                loading? <Loading></Loading>:
+                <div className='pt-2'>
             <div>
                 <div className='px-4 pt-2 rounded-lg'>
                     <div className='rounded-lg p-2 bg-gradient-to-r from-amber-50 via-amber-300 to-amber-50'>
@@ -32,6 +40,8 @@ const Service = () => {
                 </div>
             </div>
         </div>
+            }
+        </>
     );
 };
 

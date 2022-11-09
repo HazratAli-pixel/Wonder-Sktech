@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 import 'react-photo-view/dist/react-photo-view.css';
 const ServiceItem = ({service}) => {
-    
     return (
         <PhotoProvider>
             <div className="card bg-base-100 shadow-xl">

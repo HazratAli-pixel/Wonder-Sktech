@@ -81,7 +81,7 @@ const UserContext = ({children}) => {
 
     },[])
     // const authInfo = {user, loading, createUser, signIn, logout, signinWithGoogle}
-    const authInfo = {user, loading, createUser,emailverify, signIn, logout, signinWithGoogle,signinWithGithub,signinWithFacebook, updateProfileInfo, modechange, modeToogle}
+    const authInfo = {user, loading, setloading, createUser,emailverify, signIn, logout, signinWithGoogle,signinWithGithub,signinWithFacebook, updateProfileInfo, modechange, modeToogle}
 
     return (
         <AuthContext.Provider value={authInfo} >

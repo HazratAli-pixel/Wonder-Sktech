@@ -1,10 +1,21 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import Loading from '../ExtraComponent/Loading';
+import { AuthContext } from '../UserContext/UserContext';
 import ServiceItem from './ServiceItem';
 
 const Allservice = () => {
-    const response = useLoaderData()
-    console.log(response)
+    const {loading, setloading } = useContext(AuthContext)
+    const [response, setresponse] = useState([])
+    useEffect(()=>{
+        fetch(`https://wondersketches-hazratali-pixel.vercel.app/service/list`)
+        .then(res=>res.json())
+        .then(data=>{ 
+            setloading(false)
+            console.log(data)
+            setresponse(data)
+        })
+    },[setloading])
+    // console.log(response)
     return (
         <div className='pt-2'>
             <div>
@@ -18,7 +29,7 @@ const Allservice = () => {
                 <div className='p-4 '>
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                         {
-                            response.map(serviceitem=><ServiceItem service={serviceitem}></ServiceItem>)
+                            loading? <Loading></Loading>: response.map(sertem=><ServiceItem service={sertem}></ServiceItem>)
                         } 
                     </div>
                 </div>

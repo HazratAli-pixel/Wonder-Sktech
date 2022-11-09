@@ -1,22 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { FcBusinessman, FcClock } from 'react-icons/fc';
 import { useLoaderData } from 'react-router-dom';
+import Loading from '../ExtraComponent/Loading';
 import ReviewSections from '../ReviewSection/ReviewSections';
 import RightSideBar from '../RightSideBar/RightSideBar';
 
 const Servicedetails = () => {
     const {respons} = useLoaderData()
     const [reviews, setReviews] = useState([])
+    const [loading, setloading] = useState(true)
+
 
     useEffect(()=>{
         fetch(`https://wondersketches-hazratali-pixel.vercel.app/review/service/${respons._id}`)
         .then(response=>response.json())
-        .then(data=>setReviews(data.respons))
+        .then(data=>{
+            setloading(false)
+            setReviews(data.respons)})
         .catch(error=>console.log(error.message))
-    },[respons._id])
+    },[respons._id,setloading])
 
+    console.log("id",respons);
     return (
-        <div>
+        <>
+        {
+            loading? <Loading></Loading>:
+            <div>
             <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3'>
                 <div className='col-span-2'>
                     <div>
@@ -30,6 +39,7 @@ const Servicedetails = () => {
                                 <img className='rounded-lg' src={respons?.imgUrl} alt="" />
                             </div>
                             <div className='p-2'>
+                            
                                 <h1 className='text-sm sm:text-sm md:text-base lg:text-xl xl:text-xl text-justify px-3 py-2'><strong>Details: </strong> {respons?.description}</h1>
                                 <h2 className="text-sm sm:text-sm md:text-base lg:text-xl xl:text-xl text-justify px-3 py-2"><span className='font-bold'>Price:</span> {respons.price} tk</h2>
                                 <h2 className="flex flex-row items-center text-sm sm:text-sm md:text-base lg:text-xl xl:text-xl text-justify px-3 py-2"><span className='font-bold mr-1'>Service Taken: </span> {respons.totalBuy} <FcBusinessman className='ml-2'/> </h2>
@@ -70,6 +80,8 @@ const Servicedetails = () => {
                 </div>
             </div>
         </div>
+        }
+        </>
     );
 };
 

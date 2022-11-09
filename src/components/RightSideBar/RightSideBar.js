@@ -21,14 +21,16 @@ const RightSideBar = ({setReviews}) => {
 
     const submitReview=(e)=>{
         e.preventDefault()
-        alert("fsafasdf")
-        const form = e.target
-        console.log(form)
+        const reviw = e.target.review.value
+        const rating = e.target.rating
+        console.log(reviw)
+      
 
         // alert("form sumit",form.review.value)
-        alert(form)
+        alert(reviw)
 
     }
+
 
     return (
         <div className=''>
@@ -48,7 +50,7 @@ const RightSideBar = ({setReviews}) => {
             
         <div>
             <div className='border-2 border-red-200 p-2'>
-                <form action="" method='POST'>
+                <form action="" method='POST' onSubmit={submitReview}>
                     <div className='p-1'>
                         <label htmlFor=""><strong>Review:</strong> </label>
                         <textarea className="textarea w-full textarea-accent" onKeyUp={()=>setreviews()} name='review' placeholder="Express your openion here....."></textarea>
@@ -56,23 +58,18 @@ const RightSideBar = ({setReviews}) => {
                     
                     <div className='p-1 flex items-center'>
                         <label htmlFor="" className='mr-3'><strong>Rating:</strong> </label>
-                        <div className="rating rating-lg rating-half" name='rating'>
+                        <div className="rating rating-lg">
                             <input type="radio" name="rating-4" className="rating-hidden" />
-                            <input type="radio" name="rating-4" className="bg-amber-300 mask mask-star-2 mask-half-1" />
-                            <input type="radio" name="rating-4" className="bg-amber-300 mask mask-star-2 mask-half-2" />
-                            <input type="radio" name="rating-4" className="bg-amber-400 mask mask-star-2 mask-half-1" checked />
-                            <input type="radio" name="rating-4" className="bg-amber-400 mask mask-star-2 mask-half-2" />
-                            <input type="radio" name="rating-4" className="bg-amber-500 mask mask-star-2 mask-half-1" />
-                            <input type="radio" name="rating-4" className="bg-amber-500 mask mask-star-2 mask-half-2" />
-                            <input type="radio" name="rating-4" className="bg-amber-600 mask mask-star-2 mask-half-1" />
-                            <input type="radio" name="rating-4" className="bg-amber-600 mask mask-star-2 mask-half-2" />
-                            <input type="radio" name="rating-4" className="bg-amber-700 mask mask-star-2 mask-half-1" />
-                            <input type="radio" name="rating-4" className="bg-amber-800 mask mask-star-2 mask-half-2" />
+                            <input type="radio" name="rating-4" className="bg-amber-300 mask mask-star-2 ratingvalue" />
+                            <input type="radio" name="rating-4" className="bg-amber-400 mask mask-star-2 ratingvalue" checked />
+                            <input type="radio" name="rating-4" className="bg-amber-500 mask mask-star-2 ratingvalue" />
+                            <input type="radio" name="rating-4" className="bg-amber-600 mask mask-star-2 ratingvalue" />
+                            <input type="radio" name="rating-4" className="bg-amber-700 mask mask-star-2 ratingvalue" />
                         </div>
                     </div>
                     <div className='text-center py-4'>
                         {
-                            user?<button className="btn btn-warning" onClick={(e)=>submitReview(e)}>For review you need to log in first</button>:<button className="btn btn-success">For review you need to log in first</button>
+                            user?<button className="btn btn-warning">For review you need to log in first</button>:<button className="btn btn-success">For review you need to log in first</button>
                         }
                     </div>
                 </form>
