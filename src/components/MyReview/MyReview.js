@@ -9,9 +9,8 @@ const MyReview = () => {
     useEffect(()=>{
         const token = localStorage.getItem('accessToken')
         console.log(token);
-        const name = user.displayName
         const userId = user.email
-        const url = `https://wondersketches-hazratali-pixel.vercel.app/review/user?name=${name}&userId=${userId}`
+        const url = `https://wondersketches-hazratali-pixel.vercel.app/review/user?userId=${userId}`
         console.log(url)
         fetch(url,{
                 method:"GET",

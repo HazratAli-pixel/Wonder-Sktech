@@ -15,7 +15,8 @@ const Signin = () => {
         signinWithGoogle()
         .then(result=>{
             setError('');
-            const userId = result.email
+            const user = result.user
+            const userId = user.email
             const currentUserinfo =  {userId}
             jwt(currentUserinfo)
         })
@@ -27,7 +28,8 @@ const Signin = () => {
         .then(result=>
             {
                 setError('');
-                const userId = result.email
+                const user = result.user
+                const userId = user.email
                 const currentUserinfo =  {userId}
                 jwt(currentUserinfo)
             })
@@ -37,7 +39,8 @@ const Signin = () => {
         signinWithGithub()
         .then(result=>{
             setError('');
-            const userId = result.email
+            const user = result.user
+            const userId = user.email
             const currentUserinfo =  {userId}
             jwt(currentUserinfo)
         })
@@ -54,7 +57,8 @@ const Signin = () => {
         .then(result =>{
             form.reset();
             setError('')
-            const userId = result.email
+            const user = result.user
+            const userId = user.email
             const currentUserinfo =  {userId}
             jwt(currentUserinfo)
         })
@@ -65,9 +69,9 @@ const Signin = () => {
 
     const jwt = (userinformation)=>{
             fetch("https://wondersketches-hazratali-pixel.vercel.app/jwt",{
-                method:"POST",
+                method: "POST",
                 headers:{
-                    'Content-type':'application/json'
+                    'content-type':'application/json'
                 },
                 body:JSON.stringify(userinformation)
             })
@@ -75,19 +79,11 @@ const Signin = () => {
             .then(data => {
                 toast("Successfuly Loged in")
                 localStorage.setItem('accessToken', data.token)
-                const tokenName = 'accessToken';
-                const token = data.token;
-                const exday = 10;
-                setCookie(tokenName, token, exday)
+                console.log(data)
                 navigate(from, {replace: true})
             })
     }
-    const  setCookie = (cname, cvalue, exdays) => {
-        const d = new Date();
-        d.setTime(d.getTime() + (exdays*24*60*60*1000));
-        let expires = "expires="+ d.toUTCString();
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-      }
+
 
 
     return (
