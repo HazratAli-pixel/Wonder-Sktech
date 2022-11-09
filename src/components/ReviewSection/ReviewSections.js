@@ -1,5 +1,6 @@
 import React from 'react';
 import { BsArrowReturnRight, BsCalendarDate, BsFillClockFill } from 'react-icons/bs';
+import { FcRating } from 'react-icons/fc';
 
 const ReviewSections = ({data}) => {
     return (
@@ -23,6 +24,7 @@ const ReviewSections = ({data}) => {
                             </div>
                             <div className='px-2 py-1'>
                                 <h1 className='text-justify'>{data.reviewText}</h1>
+                                <h1 className='text-justify flex items-center pt-3'><FcRating className='mr-3'/> {data.rating}</h1>
                             </div>
                         </div>
                     </div>

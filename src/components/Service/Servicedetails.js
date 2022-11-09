@@ -16,9 +16,12 @@ const Servicedetails = () => {
         .then(response=>response.json())
         .then(data=>{
             setloading(false)
-            setReviews(data.respons)})
+            setReviews(data.respons)
+        })
         .catch(error=>console.log(error.message))
     },[respons._id,setloading])
+
+   
     return (
         <>
         {
@@ -48,8 +51,9 @@ const Servicedetails = () => {
 
                     <div>
                         <div className='py-2 w-full'>
-                            <div className='bg-gradient-to-r from-amber-300 to-amber-0'>
+                            <div className='bg-gradient-to-r from-amber-300 to-amber-0 flex items-center'>
                                 <h1 className='font-bold px-3 py-1 text-lg'>Public Reviews </h1>
+                                <p className='text-sm'>-Sorted by last review time</p>
                             </div>
                         </div>
                         {

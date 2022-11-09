@@ -38,7 +38,7 @@ export const Routes = createBrowserRouter([
             },
             {
                 path:'servicelist',
-                element: <Privateroute><Allservice></Allservice> </Privateroute>,
+                element: <Allservice></Allservice>,
             },
             {
                 path:'service/:id',
