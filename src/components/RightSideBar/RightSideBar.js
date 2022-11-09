@@ -35,7 +35,11 @@ const RightSideBar = ({setReviews,serId, reviews}) => {
             body:JSON.stringify(reviewdata)
         })
         .then(res=>res.json())
-        .then(resdata=>console.log(resdata))
+        .then(resdata=>{
+            const newReview = [resdata,...reviews]
+            setReviews(newReview)
+            console.log(resdata)
+        })
     }
     
     console.log(serId)
