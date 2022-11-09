@@ -1,37 +1,38 @@
 import React from 'react';
+import { FcBusinessman, FcClock } from 'react-icons/fc';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import { Link } from 'react-router-dom';
 
-const ServiceItem = () => {
+import 'react-photo-view/dist/react-photo-view.css';
+const ServiceItem = ({service}) => {
+    
     return (
-        <div className="card bg-base-100 shadow-xl">
-            <figure className="px-10 pt-10">
-                <img src="https://www.zauca.com/wp-content/uploads/2017/10/xxxplanBasic.png,,Mic.6kXtttkuSu.webp,Mic.xk9DWYMhH4.webp.pagespeed.ic.aEvs7QQt4Y.webp" alt="Shoes" className="rounded-xl" />
-            </figure>
-            <div className="card-body">
-                <h2 className="card-title  font-bold">Basic Plan – ₹5800</h2>
-                <span className=''>
-                    – 1 Free Domain Name <br />
-                    – 10 Page (Dynamic Website) <br />
-                    – Business Email id (Webmail) <br />
-                    – Unlimited Images & Videos <br />
-                    – Unlimited (Bandwidth/ Space) <br />
-                    – SEO Ready Website <br />
-                    – 100% Responsive Website <br />
-                    – Live Chat Integration <br />
-                    – Payment Gateway Integration <br />
-                    – Social Media Integration <br />
-                    – 24/7 Support (Phone/Email/Chat) <br />
-                    – Annual Renewal Rs. 3000
-                </span>
-                <div className='pb-8'>
-                    <p className='italic text-slate-400'>Note: GST @ 18% Applicable on All Purchase</p>
-                </div>
-                <div className='flex flex-row justify-center'>
-                    <div className="card-actions absolute bottom-2">
-                        <button className="btn btn-primary hover:bg-white hover:text-black hover:outline-black animate-bounce">Buy Now</button>
+        <PhotoProvider>
+            <div className="card bg-base-100 shadow-xl">
+                <figure className="px-10 pt-10">
+                    <PhotoView key={service.imgUrl} 
+                     speed={() => 800}
+                    easing={(type) => (type === 2 ? 'cubic-bezier(0.36, 0, 0.66, -0.56)' : 'cubic-bezier(0.34, 1.56, 0.64, 1)')}
+                    src={service.imgUrl}>
+                        <img src={service.imgUrl} alt="Shoes" className="rounded-xl" />
+                    </PhotoView>
+                </figure>
+                <div className="card-body">
+                    <h2 className="card-title  font-bold">{service.serviceName}</h2>
+                    <h2 className="">{service.description.slice(0,100)}...</h2>
+                    <h2 className=""><span className='font-bold'>Price:</span> {service.price} tk</h2>
+                    <h2 className="flex flex-row items-center"><span className='font-bold mr-1'>Service Taken: </span> {service.totalBuy} <FcBusinessman className='ml-2'/> </h2>
+                    <h2 className="flex flex-row items-center"><span className='font-bold mr-1'>Posted: </span> {service.createdOn.slice(3,24)} <FcClock className='ml-2'/> </h2>
+                    
+                    <div className="divider"></div>
+                    <div className='flex flex-row justify-center'>
+                        <div className="card-actions absolute bottom-2 right-8">
+                            <Link to={`/service/${service._id}`}><button className="btn btn-primary hover:bg-white hover:text-black hover:outline-black">Details</button></Link>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>   
+        </PhotoProvider>   
     );
 };
 

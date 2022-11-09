@@ -5,6 +5,8 @@ import Home from "../Home/Home";
 import Main from "../Layout/Main";
 import Profile from "../Profile/Profile";
 import Privateroute from "../Routes/Privateroute";
+import Allservice from "../Service/Allservice";
+import Servicedetails from "../Service/Servicedetails";
 import Signin from "../Signin/Signin";
 import Signup from "../Signup/Signup";
 
@@ -33,7 +35,21 @@ export const Routes = createBrowserRouter([
             {
                 path:'profile',
                 element: <Privateroute><Profile/></Privateroute>,
-            }
+            },
+            {
+                path:'servicelist',
+                loader:({params})=>{
+                    return fetch(`https://wondersketches-hazratali-pixel.vercel.app/service/list`)
+                },
+                element: <Privateroute><Allservice></Allservice> </Privateroute>,
+            },
+            {
+                path:'service/:id',
+                loader:({params})=>{
+                    return fetch(`https://wondersketches-hazratali-pixel.vercel.app/service/${params.id}`)
+                },
+                element: <Servicedetails></Servicedetails>,
+            },
         ]
     },
 ]);
