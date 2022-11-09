@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { FcBusinessman, FcClock } from 'react-icons/fc';
 import { useLoaderData } from 'react-router-dom';
 import ReviewSections from '../ReviewSection/ReviewSections';
 import RightSideBar from '../RightSideBar/RightSideBar';
 
 const Servicedetails = () => {
     const {respons} = useLoaderData()
-
     const [reviews, setReviews] = useState([])
+
     useEffect(()=>{
         fetch(`https://wondersketches-hazratali-pixel.vercel.app/review/service/${respons._id}`)
         .then(response=>response.json())
@@ -14,7 +15,6 @@ const Servicedetails = () => {
         .catch(error=>console.log(error.message))
     },[respons._id])
 
-    console.log(reviews);
     return (
         <div>
             <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3'>
@@ -30,7 +30,10 @@ const Servicedetails = () => {
                                 <img className='rounded-lg' src={respons?.imgUrl} alt="" />
                             </div>
                             <div className='p-2'>
-                                <h1 className='text-2xl text-justify px-3'><strong>Details: </strong> {respons?.description}</h1>
+                                <h1 className='text-sm sm:text-sm md:text-base lg:text-xl xl:text-xl text-justify px-3 py-2'><strong>Details: </strong> {respons?.description}</h1>
+                                <h2 className="text-sm sm:text-sm md:text-base lg:text-xl xl:text-xl text-justify px-3 py-2"><span className='font-bold'>Price:</span> {respons.price} tk</h2>
+                                <h2 className="flex flex-row items-center text-sm sm:text-sm md:text-base lg:text-xl xl:text-xl text-justify px-3 py-2"><span className='font-bold mr-1'>Service Taken: </span> {respons.totalBuy} <FcBusinessman className='ml-2'/> </h2>
+                                <h2 className="flex flex-row items-center text-sm sm:text-sm md:text-base lg:text-xl xl:text-xl text-justify px-3 py-2"><span className='font-bold mr-1'>Posted: </span> {respons.createdOn.slice(3,24)} <FcClock className='ml-2'/> </h2>
                             </div>
                         </div>
                     </div>
@@ -42,16 +45,27 @@ const Servicedetails = () => {
                             </div>
                         </div>
                         {
-                            reviews.length>0?reviews.map(data=><ReviewSections data={data}></ReviewSections>): <h1>No Reviews found</h1>
+                            reviews.length>0? 
+                            (reviews.map(data=><ReviewSections key={data.serviceId} data={data}></ReviewSections>))
+                            : 
+                            (
+                            <div className='p-2'>
+                                <div className="alert alert-warning shadow-lg">
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                                        <span><strong>No reviews found!</strong> But you can be first reviewer</span>
+                                    </div>
+                                </div>
+                            </div>
+                            )
                             
                         }
                     </div>
 
                 </div>
-                <div className='col-span-1'>
-                    <div>
-                     <h1>review sections</h1>
-                     <RightSideBar/>
+                <div className='col-span-1 bg-slate-200 p-2'>
+                    <div className='sticky top-0'>
+                     <RightSideBar setReviews={setReviews} reviews={reviews}/>
                     </div>
                 </div>
             </div>
