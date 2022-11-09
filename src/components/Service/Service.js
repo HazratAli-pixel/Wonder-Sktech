@@ -28,7 +28,7 @@ const Service = () => {
                     </div>
                 </div>
                 <div className='flex justify-center'>
-                   <Link to='/servicelist'><button className='btn btn-success font-bold'>see all</button></Link> 
+                   <Link to='/servicelist'><button className='btn btn-success font-bold animate-pulse'>see all</button></Link> 
                 </div>
             </div>
         </div>
