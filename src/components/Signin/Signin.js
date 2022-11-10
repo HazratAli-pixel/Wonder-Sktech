@@ -4,11 +4,12 @@ import { FaFacebook, FaGithub } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useTitle from '../CustomHooks/useTitle';
+import Loading from '../ExtraComponent/Loading';
 import { AuthContext } from '../UserContext/UserContext';
 
 const Signin = () => {
     useTitle("Sing In")
-    const {signinWithGoogle,signinWithGithub,signinWithFacebook, signIn} = useContext(AuthContext);
+    const {signinWithGoogle,signinWithGithub,signinWithFacebook, signIn, loading, setloading} = useContext(AuthContext);
     const [error, setError] = useState('')
     const navigate = useNavigate();
     const location = useLocation();
@@ -22,7 +23,10 @@ const Signin = () => {
             const currentUserinfo =  {userId}
             jwt(currentUserinfo)
         })
-        .then(error => setError(error.message))
+        .then(error => {
+            setError(error.message)
+            setloading(false)
+        })
 
     }
     const facebooksignin = () => {
@@ -35,7 +39,9 @@ const Signin = () => {
                 const currentUserinfo =  {userId}
                 jwt(currentUserinfo)
             })
-        .then(error => setError(error.message))
+        .then(error => {
+            setloading(false)
+            setError(error.message)})
     }
     const githubsignin = () => {
         signinWithGithub()
@@ -46,7 +52,9 @@ const Signin = () => {
             const currentUserinfo =  {userId}
             jwt(currentUserinfo)
         })
-        .then(error => setError(error.message))
+        .then(error => {
+            setloading(false)
+            setError(error.message)})
         
     }
 
@@ -65,6 +73,7 @@ const Signin = () => {
             jwt(currentUserinfo)
         })
         .catch(error => {
+            setloading(false)
             setError(error.message)
         })
     }
@@ -91,6 +100,10 @@ const Signin = () => {
     return (
         <div className='flex justify-center flex-col items-center' style={{height: "100vh"}}>
             <div className='bg-slate-400 rounded-lg p-4 sm:w-full md:w-1/2 lg:w-1/3 drop-shadow-xl '>
+                {
+                    
+                    loading? <Loading/> : " "
+                }
                 <form onSubmit={handlelogin}>
                     <div className=''>
                         <h1 className='text-3xl text-center text-white font-bold'>Log in</h1>

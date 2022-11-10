@@ -4,7 +4,6 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link } from 'react-router-dom';
 
 import 'react-photo-view/dist/react-photo-view.css';
-import useTitle from '../CustomHooks/useTitle';
 const ServiceItem = ({service}) => {
     return (
         <PhotoProvider>

@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useTitle from '../CustomHooks/useTitle';
+import Loading from '../ExtraComponent/Loading';
 import { AuthContext } from '../UserContext/UserContext';
 
 const Signup = () => {
     useTitle("Sign Up")
-    const {createUser, updateProfileInfo}= useContext(AuthContext)
+    const {createUser, updateProfileInfo, loading, setloading}= useContext(AuthContext)
     const [error, setError] = useState('')
     const navigate = useNavigate();
     const location = useLocation();
@@ -24,22 +25,25 @@ const Signup = () => {
             setError('');
             const info = { displayName: name, photoURL: url};
             navigate(from, {replace:true})
-            console.log("check 1");
             updateProfileInfo(info)
             .then(result => {console.log("check 2", result)})
             .catch(error => console.error(error))
-            console.log("check 3");
         })
         .catch(error => {
+            setloading(false)
             setError(error.message);
         })
     }
     return (
         <div className='flex justify-center flex-col items-center' style={{height: "100vh"}}>
             <div className='bg-slate-400 rounded-lg p-4 sm:w-full md:w-1/2 lg:w-1/3 drop-shadow-xl '>
+                {
+                        
+                        loading? <Loading/> : " "
+                }
                 <form onSubmit={handleregistration}>
                     <div className=''>
-                        <h1 className='text-3xl text-center text-white font-bold'>Log in</h1>
+                        <h1 className='text-3xl text-center text-white font-bold'>Sign Up</h1>
                         <div className="form-control ">
                             <label className="label">
                                 <span className="label-text font-bold">Your Name</span>
