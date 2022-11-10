@@ -1,8 +1,10 @@
 
 import { useRouteError } from "react-router-dom";
+import useTitle from "../CustomHooks/useTitle";
 
 
 export default function ErrorPage() {
+  useTitle('Error')
   const error = useRouteError();
   console.error(error);
 

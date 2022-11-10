@@ -3,9 +3,11 @@ import { AiFillGoogleCircle } from 'react-icons/ai';
 import { FaFacebook, FaGithub } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import useTitle from '../CustomHooks/useTitle';
 import { AuthContext } from '../UserContext/UserContext';
 
 const Signin = () => {
+    useTitle("Sing In")
     const {signinWithGoogle,signinWithGithub,signinWithFacebook, signIn} = useContext(AuthContext);
     const [error, setError] = useState('')
     const navigate = useNavigate();

@@ -1,6 +1,8 @@
 import React from 'react';
+import useTitle from '../CustomHooks/useTitle';
 
 const Section1 = () => {
+    useTitle('Home')
     return (
         <div className='pt-5'>
             <div>

@@ -3,6 +3,7 @@ import Loading from '../ExtraComponent/Loading';
 import ServiceItem from './ServiceItem';
 
 const Allservice = () => {
+    
     const [loading, setloading] = useState(true)
     const [response, setresponse] = useState([])
     useEffect(()=>{

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { FcBusinessman, FcClock } from 'react-icons/fc';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../CustomHooks/useTitle';
 import Loading from '../ExtraComponent/Loading';
 import ReviewSections from '../ReviewSection/ReviewSections';
 import RightSideBar from '../RightSideBar/RightSideBar';
 
 const Servicedetails = () => {
+    useTitle('Service Details')
     const {respons} = useLoaderData()
     const [reviews, setReviews] = useState([])
     const [loading, setloading] = useState(true)

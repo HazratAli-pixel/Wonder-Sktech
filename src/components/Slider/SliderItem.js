@@ -8,7 +8,7 @@ const SliderItem = () => {
         <span className='hidden sm:hidden md:block lg:block xl:block'>
             <div className="absolute flex flex-col justify-end transform -translate-y-1/2 left-5 right-5 top-1/4">
                 <h1 className='text-3xl text-white font-bold'>Wonder Sketches</h1>
-                <p className='pt-3 text-white'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum ducimus sequi molestias quas unde perspiciatis obcaecati eaque possimus saepe labore!</p>
+                <p className='pt-3 text-white'>If you are looking for website development or mobile app development, or digital marketing solutions in Bangladesh, you are at the right place. </p>
             </div>
             {
                 user? "": <div className="absolute flex flex-col justify-end transform -translate-y-1/2 left-5 right-5 top-3/4">

@@ -3,11 +3,13 @@ import { BiEditAlt } from 'react-icons/bi';
 import { MdAutoDelete } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import useTitle from '../CustomHooks/useTitle';
 import Loading from '../ExtraComponent/Loading';
 import { AuthContext } from '../UserContext/UserContext';
 
 
 const MyReview = () => {
+    useTitle('My Review')
     const {user} = useContext(AuthContext)
     const [reviews, setReviews] = useState([])
     const [flag, setflag] = useState(true)

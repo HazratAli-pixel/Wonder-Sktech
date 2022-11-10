@@ -1,10 +1,12 @@
 
 import React, { useContext } from 'react';
 import { toast } from 'react-toastify';
+import useTitle from '../CustomHooks/useTitle';
 import { AuthContext } from '../UserContext/UserContext';
 
 
 const Profile = () => {
+    useTitle('Profile')
     const {user, emailverify} = useContext(AuthContext)
     console.log(user);
     const emailvery = ()=>{
